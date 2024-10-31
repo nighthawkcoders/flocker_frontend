@@ -2,7 +2,7 @@
 layout: post 
 title: Create and Compete - Doodle Game UI
 search_exclude: true
-permalink: /moderations/doodle_competition/
+permalink: /moderation/doodle_competition/
 author: Arshia, Prajna, Mirabelle, Alex
 ---
 
