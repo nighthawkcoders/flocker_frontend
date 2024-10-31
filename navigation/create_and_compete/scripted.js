@@ -1,8 +1,8 @@
 // Array of zoomed-in image URLs
 const imageList = [
-    "images/zooming-guess-images/Adam Sandler/adam sandler zoomed.png",
-    "images/zooming-guess-images/Bronny James/bronny james zoomed.png",
-    "images/zooming-guess-images/einstien/einstien zoomed.png"
+    "zoomed-image1.jpg",
+    "zoomed-image2.jpg",
+    "zoomed-image3.jpg"
 
     // Add more image URLs as needed
 ];
