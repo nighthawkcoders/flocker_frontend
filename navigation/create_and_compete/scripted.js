@@ -3,8 +3,6 @@ const imageList = [
     "images/zooming-guess-images/Adam Sandler/adam sandler zoomed.png",
     "images/zooming-guess-images/Bronny James/bronny james zoomed.png",
     "images/zooming-guess-images/einstien/einstien zoomed.png"
-    "images/zooming-guess-images/kanye/kanye zoomed.png"
-    ""
 
     // Add more image URLs as needed
 ];
