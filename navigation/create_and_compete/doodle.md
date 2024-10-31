@@ -22,6 +22,6 @@ The page is a place where people can explore themselves creatively and compete t
   Chat Room
 </a>
 
-<a href="{{site.baseurl}}/moderation/doodle_competition" style="padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
+<a href="{{site.baseurl}}/moderation/doodle_competition/" style="padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
   Competition
 </a>
