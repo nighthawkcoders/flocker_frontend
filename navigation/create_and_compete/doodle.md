@@ -12,8 +12,6 @@ author: Alex, Arshia, Prajna, and Mirabelle
 
 <a href="{{site.baseurl}}/moderation/rules_doodle/">Moderation Rules</a>
 
-<a href="{{site.baseurl}}/moderations/doodle_competition/">Competition</a>
-
 
 <p> 
 The page is a place where people can explore themselves creatively and compete to see who has the best doodle. This allows for players to collaborate over their artistic abilities. Our room includes a chat room where players can converse about their creations, a doodle compete area, a place where people can post their art, and winners get crowned every week. This will help add to our classes page by making a fun artistic environment where everyone can collaborate. </p>
@@ -22,4 +20,8 @@ The page is a place where people can explore themselves creatively and compete t
 
 <a href="{{site.baseurl}}/moderation/chat_doodle/" style="padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
   Chat Room
+</a>
+
+<a href="{{site.baseurl}}/moderation/doodle_competition" style="padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
+  Competition
 </a>
