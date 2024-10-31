@@ -1,0 +1,3 @@
+[submodule "test_flocker"]
+    path = test_flocker
+    url = https://github.com/your-org/test_flocker.git
