@@ -13,52 +13,52 @@ author: Arhaan, Akshaj, Mihir, Keerthan
     <h1>Zoom N Guess</h1>
     <p>Look at the closely zoomed-in image below and guess who it is. Explain why you think it's that person!</p>
 
-    <!-- Random Image Section -->
-    <div class="zoom-image-section">
-        <button id="generate-image" class="submit-button">Generate Zoomed Image</button>
-        <div id="image-display" class="zoom-image-box">
-            <!-- Random zoomed-in image will be displayed here -->
-            <img id="zoomed-image" src="default-image.jpg" alt="Zoomed Image" class="zoom-image">
-        </div>
+<!-- Random Image Section -->
+<div class="zoom-image-section">
+    <button id="generate-image" class="submit-button">Generate Zoomed Image</button>
+    <div id="image-display" class="zoom-image-box">
+        <!-- Random zoomed-in image will be displayed here -->
+        <img id="zoomed-image" src="default-image.jpg" alt="Zoomed Image" class="zoom-image">
     </div>
+</div>
 
-    <!-- Guess Input Section -->
-    <div class="guess-box">
-        <label for="guess-input">Your Guess:</label>
-        <input type="text" id="guess-input" placeholder="Enter the name of the person">
+<!-- Guess Input Section -->
+<div class="guess-box">
+    <label for="guess-input">Your Guess:</label>
+    <input type="text" id="guess-input" placeholder="Enter the name of the person">
+</div>
+
+<!-- Reasoning Input Section -->
+<div class="explanation-box">
+    <label for="reasoning-input">Explain Your Reasoning:</label>
+    <textarea id="reasoning-input" placeholder="Why do you think it's that person?"></textarea>
+</div>
+
+<!-- Submit Button -->
+<button id="submit-guess" class="submit-button">Submit Guess</button>
+
+<!-- Guess Feedback Section -->
+<div id="feedback-section">
+    <h2>Your Feedback</h2>
+    <div id="feedback-display" class="info-box">Your guess and explanation will appear here after submission.</div>
+</div>
+
+<!-- Leaderboard Section -->
+<section id="leaderboard-section">
+    <h2>Top Guessers</h2>
+    <ul id="leaderboard" class="leaderboard-box">
+        <!-- Leaderboard will show the top contributors -->
+    </ul>
+</section>
+
+<!-- Feedback Modal -->
+<div id="feedback-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Feedback Submitted!</h2>
+        <p>Your feedback has been submitted successfully.</p>
     </div>
-
-    <!-- Reasoning Input Section -->
-    <div class="explanation-box">
-        <label for="reasoning-input">Explain Your Reasoning:</label>
-        <textarea id="reasoning-input" placeholder="Why do you think it's that person?"></textarea>
-    </div>
-
-    <!-- Submit Button -->
-    <button id="submit-guess" class="submit-button">Submit Guess</button>
-
-    <!-- Guess Feedback Section -->
-    <div id="feedback-section">
-        <h2>Your Feedback</h2>
-        <div id="feedback-display" class="info-box">Your guess and explanation will appear here after submission.</div>
-    </div>
-
-    <!-- Leaderboard Section -->
-    <section id="leaderboard-section">
-        <h2>Top Guessers</h2>
-        <ul id="leaderboard" class="leaderboard-box">
-            <!-- Leaderboard will show the top contributors -->
-        </ul>
-    </section>
-
-    <!-- Feedback Modal -->
-    <div id="feedback-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Feedback Submitted!</h2>
-            <p>Your feedback has been submitted successfully.</p>
-        </div>
-    </div>
+</div>
 </div>
 
 <style>
