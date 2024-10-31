@@ -7,6 +7,7 @@ menu: nav/create_and_compete.html
 author: Arhaan, Mihir, Keerthan, and Akshaj
 ---
 
+<a href="{{site.baseurl}}/create_and_compete/zoominguess/ui">Zoominguess UI</a>
 
 <details>
 
