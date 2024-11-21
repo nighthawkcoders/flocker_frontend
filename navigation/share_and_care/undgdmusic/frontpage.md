@@ -163,6 +163,32 @@ permalink: /undgdmusic/
     <p>Chat with others in real-time!</p>
 
 </header>
+
+<div class="chatroom-container">
+    <h2>Flocker Chatroom</h2>
+    <div class="chat-area" id="messages">
+        <!-- Messages will appear here -->
+    </div>
+    <form class="message-form" id="chat-form">
+        <input type="text" id="username" placeholder="Your Name" required>
+        <input type="text" id="message" placeholder="Type a message..." maxlength="200" required>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('chat-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value || "Anonymous";
+            const message = document.getElementById('message').value;
+            const timestamp = new Date().toLocaleTimeString();
+            const messageHtml = `<p><span class="username">${username}</span>: ${message} <span class="timestamp">[${timestamp}]</span></p>`;
+            document.getElementById("messages").innerHTML += messageHtml;
+            event.target.reset();
+        });
+    });
+</script>
 <div class="container">
     <div class="form-container">
         <h2>Select Group and Channel</h2>
@@ -174,9 +200,6 @@ permalink: /undgdmusic/
             <label for="channel_id">Channel:</label>
             <select id="channel_id" name="channel_id" required>
                 <option value="">Select a channel</option>
-                <option value="Artists">Artists</option>
-                <option value="Songs">Songs</option>
-                <option value="Genres">Genres</option>
             </select>
             <button type="submit">Select</button>
         </form>
@@ -206,22 +229,10 @@ permalink: /undgdmusic/
     </div>
 </div>
 
-<div class="container">
-  <div class="category-box">
-    <!-- Food and Drink Category -->
-    <div class="category-row" onclick="toggleItems('Channels')">
-      <h3>Channels</h3>
-      <div id="Channels" class="item-list-container" style="display: none;">
-        <div class="item-list">
-          <button onclick="selectItem(this, 'most', 'Artists')" data-channel-id="1">Artists</button>
-          <button onclick="selectItem(this, 'most', 'Songs')" data-channel-id="2">Songs</button>
-          <button onclick="selectItem(this, 'most', 'Genres')" data-channel-id="3">Genres</button>
-        </div>
-    </div>
-</div>
 <script type="module">
     // Import server URI and standard fetch options
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+
     /**
      * Fetch groups for dropdown selection
      * User picks from dropdown
@@ -251,6 +262,7 @@ permalink: /undgdmusic/
             console.error('Error fetching groups:', error);
         }
     }
+
     /**
      * Fetch channels based on selected group
      * User picks from dropdown
@@ -264,14 +276,18 @@ async function fetchChannels(groupName) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ group_name: groupName })
         });
+        
         if (!response.ok) {
             console.error('Failed to fetch channels:', response.statusText);
             return;
         }
+        
         const channels = await response.json();
         console.log("Fetched channels:", channels);
+        
         const channelSelect = document.getElementById('channel_id');
         channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset
+        
         channels.forEach(channel => {
             const option = document.createElement('option');
             option.value = channel.id;
@@ -294,6 +310,7 @@ async function fetchChannels(groupName) {
             document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
         }
     });
+
     /**
      * Handle form submission for selection
      * Select Button: Computer fetches and displays posts
@@ -308,22 +325,26 @@ async function fetchChannels(groupName) {
             alert('Please select both group and channel.');
         }
     });
+
     /**
      * Handle form submission for adding a post
      * Add Form Button: Computer handles form submission with request
      */
     document.getElementById('postForm').addEventListener('submit', async function(event) {
         event.preventDefault();
+
         // Extract data from form
         const title = document.getElementById('title').value;
         const comment = document.getElementById('comment').value;
         const channelId = document.getElementById('channel_id').value;
+
         // Create API payload
         const postData = {
             title: title,
             comment: comment,
             channel_id: channelId
         };
+
         // Trap errors
         try {
             // Send POST request to backend, purpose is to write to database
@@ -335,9 +356,11 @@ async function fetchChannels(groupName) {
                 },
                 body: JSON.stringify(postData)
             });
+
             if (!response.ok) {
                 throw new Error('Failed to add post: ' + response.statusText);
             }
+
             // Successful post
             const result = await response.json();
             alert('Post added successfully!');
@@ -349,6 +372,7 @@ async function fetchChannels(groupName) {
             alert('Error adding post: ' + error.message);
         }
     });
+
     /**
      * Fetch posts based on selected channel
      * Handle response: Fetch and display posts
@@ -366,15 +390,20 @@ async function fetchChannels(groupName) {
             if (!response.ok) {
                 throw new Error('Failed to fetch posts: ' + response.statusText);
             }
+
             // Parse the JSON data
             const postData = await response.json();
+
             // Extract posts count
             const postCount = postData.length || 0;
+
             // Update the HTML elements with the data
             document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
+
             // Get the details div
             const detailsDiv = document.getElementById('details');
             detailsDiv.innerHTML = ''; // Clear previous posts
+
             // Iterate over the postData and create HTML elements for each item
             postData.forEach(postItem => {
                 const postElement = document.createElement('div');
@@ -387,10 +416,12 @@ async function fetchChannels(groupName) {
                 `;
                 detailsDiv.appendChild(postElement);
             });
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     }
+
     // Fetch groups when the page loads
     fetchGroups();
 </script>
@@ -672,24 +703,23 @@ async function fetchChannels(groupName) {
 </style>
 
 <script>
-    // Make the AI Assistant draggable
+    // making the assistant box draggable
     dragElement(document.getElementById("aiAssistant"));
 
     function dragElement(el) {
         let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-        // Mouse down event on the header to start dragging
+        // when mouse down event on the header to start dragging
         el.onmousedown = dragMouseDown;
 
         function dragMouseDown(e) {
-            e = e || window.event;
             e.preventDefault();
 
-            // Get the mouse cursor position at startup
+            // get the mouse cursor position at startup
             pos3 = e.clientX;
             pos4 = e.clientY;
 
-            // Call a function whenever the cursor moves
+            // call a function whenever the cursor moves
             document.onmousemove = elementDrag;
             document.onmouseup = closeDragElement;
         }
@@ -703,7 +733,7 @@ async function fetchChannels(groupName) {
             pos2 = pos4 - e.clientY;
             pos3 = e.clientX;
             pos4 = e.clientY;
-
+    
             // Set the element's new position
             el.style.top = (el.offsetTop - pos2) + "px";
             el.style.left = (el.offsetLeft - pos1) + "px";
@@ -755,32 +785,32 @@ async function fetchChannels(groupName) {
         ]
     };
 
-    // Track the current index of responses for each type of message
+    // tracking the current index of responses for each type of message
     const responseIndex = {};
 
-    // Function to send a predefined message and cycle through responses
+    // function to send a predefined message and cycle through responses
     function sendPredefinedMessage(message) {
         const chatWindow = document.getElementById('chat-window');
         
-        // Display user message
+        // display user message
         const userMessage = document.createElement('p');
         userMessage.className = 'user-message';
         userMessage.innerText = "You: " + message;
         chatWindow.appendChild(userMessage);
         
-        // Get the response list and cycle through it
+        // get the response list and cycle through it
         const responseList = responses[message];
         if (!responseIndex[message]) responseIndex[message] = 0;
         const response = responseList[responseIndex[message]];
         responseIndex[message] = (responseIndex[message] + 1) % responseList.length; // Cycle to the next response
 
-        // Display AI response
+        // display AI response
         const assistantMessage = document.createElement('p');
         assistantMessage.className = 'assistant-message';
         assistantMessage.innerHTML = "AI Assistant: " + response;
         chatWindow.appendChild(assistantMessage);
         
-        // Add follow-up options
+        // add follow-up options
         const followUp = document.createElement('div');
         followUp.className = 'follow-up-buttons';
         followUp.innerHTML = `
@@ -789,7 +819,7 @@ async function fetchChannels(groupName) {
         `;
         chatWindow.appendChild(followUp);
         
-        // Scroll to the latest message
+        // scroll to the latest message
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 </script>
