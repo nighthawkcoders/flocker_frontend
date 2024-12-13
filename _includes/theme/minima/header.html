@@ -1,3 +1,4 @@
+<!-- This fragment overrides the default header provided by the remote minima theme to add support for login functionality.  -->
 <header class="site-header">
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
@@ -16,6 +17,7 @@
           </span>
         </label>
 
+        <!-- Adding the page menus as defined in _config.yml, plus adding Login -->
         <div class="trigger" data-baseurl="{{ site.baseurl }}">
           {%- for path in site.header_pages -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
@@ -30,4 +32,5 @@
   </div>
 </header>
 
+<!-- Load login.js script to handle user authentication status -->
 <script type="module" src="{{ site.baseurl }}/assets/js/api/login.js"></script>
